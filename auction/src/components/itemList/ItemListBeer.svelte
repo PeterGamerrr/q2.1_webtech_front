@@ -1,20 +1,23 @@
 <script>
     export let beer = {
-        name: "",
-        alcohol: "",
-        capacity: "",
+        id: undefined,
+        startPrice: undefined,
+        price: undefined,
+        startDate: undefined,
+        endDate: undefined,
+        productId: undefined
     };
 </script>
 
-
+//todo: make it so product is accessible through auctions
 <div class="beer">
-    <span class="title">{beer.name}</span><br>
+    <span class="title">{beer.productId}</span><br>
     <ul>
         <li>
-            <b>Alcohol:</b> {beer.alcohol}
+            <b>Alcohol:</b> {beer.productId}
         </li>
         <li>
-            <b>Capacity:</b> {beer.capacity}
+            <b>Capacity:</b> {beer.endDate}
         </li>
     </ul>
 </div>
