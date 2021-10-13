@@ -5,9 +5,11 @@
     import {onMount} from "svelte"
     import {filteredItems} from "../../stores/filteredItems";
 
-    export let items = [];
+    export let fetchURL = "";
     export let itemType = "beer";
     export let listPageSize = 1;
+
+    let items = [];
 
     onMount(async () => {
         items = await getData();
@@ -15,15 +17,14 @@
     })
 
     async function getData() {
-        const res = await fetch("http://localhost:3000/api/auctions");
+        const res = await fetch(fetchURL);
         console.log(res)
         if (res.ok) {
             const json = await res.json();
             console.log(json)
             return json;
         } else {
-            const text = await res.text();
-            throw new Error(text);
+            throw new Error(await res.text());
         }
     }
 
