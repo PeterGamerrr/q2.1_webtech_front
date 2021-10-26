@@ -3,7 +3,7 @@
     import ItemListContent from "./ItemListContent.svelte";
     import ItemListPager from "./ItemListPager.svelte";
     import {onMount} from "svelte"
-    import {filteredItems} from "../../stores/filteredItems";
+    import {authToken, filteredItems} from "../../stores/stores";
 
     export let fetchURL = "";
     export let itemType = "beer";
@@ -14,11 +14,11 @@
     onMount(async () => {
         items = await getData();
         $filteredItems = items;
+        console.log($authToken)
     })
 
     async function getData() {
         const res = await fetch(fetchURL);
-        console.log(res)
         if (res.ok) {
             const json = await res.json();
             console.log(json)
@@ -39,7 +39,6 @@
         $filteredItems = event.detail.text;
     }
 </script>
-
 
 {#await items}
     <p>...Waiting</p>
