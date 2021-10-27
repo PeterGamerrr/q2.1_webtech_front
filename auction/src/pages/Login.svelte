@@ -1,12 +1,12 @@
 <script>
-    import ItemList from "../components/itemList/ItemList.svelte";
+    import LoginForm from "../components/form/LoginForm.svelte";
     import Navbar from "../components/Navbar.svelte";
 </script>
 
 <main>
     <Navbar class="nav" />
     <div class="center">
-        <ItemList fetchURL="http://localhost:3000/api/auctions" itemType="beer" listPageSize="4" />
+        <LoginForm />
     </div>
 </main>
 <style>
@@ -24,6 +24,7 @@
 
     .center {
         grid-area: mainarea;
+        justify-self: center;
     }
 
     nav {

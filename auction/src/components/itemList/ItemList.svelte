@@ -43,7 +43,6 @@
 {#await items}
     <p>...Waiting</p>
 {:then items}
-    {console.log(items)}
     <SearchBar input={items} on:searchBarOutput={searchBarOutput}/>
     <div class="content">
         <ItemListContent {currListPage} {listPageSize} {itemType}/>

@@ -9,7 +9,6 @@
     let error = null;
 
     async function login() {
-        document.getElementById("")
         let res = await fetch("http://localhost:3000/api/credentials", {
             method: "POST",
             headers: {
@@ -37,6 +36,7 @@
     <TextInput bind:value={username} type="text" placeholder="username123" name="username">username</TextInput>
     <PasswordInput bind:value={password} type="password" name="password">password</PasswordInput>
     <button on:click={login} id="Login">Login</button>
+
     <div id="error">{#if error}{error}{/if}</div>
     {$authToken}
 </div>

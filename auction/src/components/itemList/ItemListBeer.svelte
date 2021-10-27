@@ -10,17 +10,17 @@
 </script>
 
 //todo: make it so product is accessible through auctions
-<div class="beer">
-    <span class="title">{beer.productId}</span><br>
-    <ul>
-        <li>
-            <b>Alcohol:</b> {beer.productId}
-        </li>
-        <li>
-            <b>Capacity:</b> {beer.endDate}
-        </li>
-    </ul>
-</div>
+    <div class="beer">
+        <span class="title">{beer.productId}</span><br>
+        <ul>
+            <li>
+                <b>Alcohol:</b> {beer.endDate}
+            </li>
+            <li>
+                <b>Capacity:</b> {beer.endDate}
+            </li>
+        </ul>
+    </div>
 
 
 <style>
