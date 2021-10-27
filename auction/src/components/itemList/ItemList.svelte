@@ -20,9 +20,7 @@
     async function getData() {
         const res = await fetch(fetchURL);
         if (res.ok) {
-            const json = await res.json();
-            console.log(json)
-            return json;
+            return await res.json();
         } else {
             throw new Error(await res.text());
         }

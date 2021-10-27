@@ -4,7 +4,7 @@
 </script>
 
 <main>
-    <Navbar class="nav" />
+    <Navbar />
     <div class="center">
         <LoginForm />
     </div>

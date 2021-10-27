@@ -33,12 +33,12 @@
 </script>
 
 <div>
-    <TextInput bind:value={username} type="text" placeholder="username123" name="username">username</TextInput>
-    <PasswordInput bind:value={password} type="password" name="password">password</PasswordInput>
+    <TextInput bind:value={username} placeholder="username123" name="username">username</TextInput>
+    <PasswordInput bind:value={password} name="password">password</PasswordInput>
     <button on:click={login} id="Login">Login</button>
 
-    <div id="error">{#if error}{error}{/if}</div>
-    {$authToken}
+    {#if error}<div id="error">{error}</div>{/if}
+
 </div>
 
 <style>

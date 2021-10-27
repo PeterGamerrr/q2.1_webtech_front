@@ -4,7 +4,7 @@
 </script>
 
 <main>
-    <Navbar class="nav" />
+    <Navbar />
     <div class="center">
         <ItemList fetchURL="http://localhost:3000/api/auctions" itemType="beer" listPageSize="4" />
     </div>

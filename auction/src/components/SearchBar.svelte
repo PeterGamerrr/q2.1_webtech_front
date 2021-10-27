@@ -42,4 +42,5 @@
 <input
         placeholder="Search..."
         bind:value={searchValue}
-        on:input={doSearch}/>
+        on:input={doSearch}
+/>
