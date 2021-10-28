@@ -1,5 +1,5 @@
 <script>
-    import {user} from "../stores/stores";
+    import {authToken, user} from "../stores/stores";
     import {onMount} from "svelte";
 
     async function hasAdmin() {
@@ -10,6 +10,19 @@
         } else {
             return false
         }
+    }
+
+    async function isLoggedIn() {
+        const userInfo = await $user;
+        console.log("loggedin" ,{userInfo})
+        return userInfo !== undefined;
+    }
+
+    function logout() {
+        $authToken = ""
+        console.log("loguout", $authToken)
+
+
     }
 
     onMount(async () => {
@@ -32,9 +45,20 @@
     <div class="register">
         <a href="/register"> Register </a>
     </div>
-    <div class="login">
-        <a href="/login"> Login </a>
-    </div>
+
+    {#await isLoggedIn()}
+        {:then val}
+        {#if val}
+            <div class="login">
+                <a on:click={logout} href="/"> logout </a>
+            </div>
+        {:else }
+            <div class="login">
+                <a href="/login"> Login </a>
+            </div>
+        {/if}
+    {/await}
+
 </nav>
 
 <style>
