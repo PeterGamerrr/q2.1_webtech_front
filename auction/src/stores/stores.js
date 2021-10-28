@@ -1,22 +1,41 @@
-import {readable, writable} from "svelte/store";
+import {derived, readable, writable} from "svelte/store";
 import router from "page";
 
 export const filteredItems = writable([]);
 
 export const authToken = writable("");
 
-export const products = readable([],async (set) => {
-    try {
-        console.log("one person is subscribed to products")
-        let response = await fetch("http://localhost:3000/api/products");
-        console.log(response);
-        if (response.ok) {
-            let json = await response.json();
-            console.log(json);
-            set(json);
+export const user = derived(
+    authToken,
+    async $authToken => {
+        if ($authToken) {
+            let data = $authToken.split(".")[1];
+            data = decodeURIComponent(escape(window.atob(data)));
+            data = await JSON.parse(data);
+            return data;
+        } else {
+            return undefined;
         }
-        return () => console.log("no one is subscribed to products")
-    } catch (e) {
-        console.error(e);
+
     }
+)
+
+export const products = readable([],function start(set) {
+    console.log("one person is subscribed to products")
+    fetch("http://localhost:3000/api/products")
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error("unable to load products")
+            }
+            return response.json()
+        })
+        .then(function (data) {
+            set(data);
+        })
+        .catch(function(e) {
+            console.error(e)
+        });
+    return function stop(){
+        console.log("no one is subscribed to products");
+    };
 });

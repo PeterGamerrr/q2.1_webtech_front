@@ -1,6 +1,12 @@
 <script>
     import ItemList from "../components/itemList/ItemList.svelte";
     import Navbar from "../components/Navbar.svelte";
+    import {user} from "../stores/stores";
+    import {onMount} from "svelte";
+    onMount(() => {
+
+        console.log("user",$user);
+    })
 </script>
 
 <main>

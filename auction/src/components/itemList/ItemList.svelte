@@ -33,7 +33,6 @@
         currListPage = event.detail.text;
     }
 
-    //FIXME: if non existing search is given output gets glitched
     const searchBarOutput = (event) => {
         console.log(event);
         console.log($filteredItems)
