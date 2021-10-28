@@ -1,4 +1,7 @@
 <script>
+    import {onMount} from "svelte";
+    import {products} from "../../stores/stores";
+
     export let beer = {
         id: undefined,
         startPrice: undefined,
@@ -7,20 +10,27 @@
         endDate: undefined,
         productId: undefined
     };
+
+    $: {
+        console.log($products)
+        beer.product = $products.find(e => e.id === beer.productId);
+    };
+
 </script>
 
-//todo: make it so product is accessible through auctions
+{#if beer.product}
     <div class="beer">
-        <span class="title">{beer.productId}</span><br>
+        <span class="title">{beer.product.name}</span><br>
         <ul>
             <li>
-                <b>Alcohol:</b> {beer.endDate}
+                <b>region:</b> {beer.product.region}
             </li>
             <li>
-                <b>Capacity:</b> {beer.endDate}
+                <b>Capacity:</b> {beer.product.capacity}
             </li>
         </ul>
     </div>
+{/if}
 
 
 <style>

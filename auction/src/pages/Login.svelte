@@ -26,8 +26,4 @@
         grid-area: mainarea;
         justify-self: center;
     }
-
-    nav {
-        grid-area: navigation;
-    }
 </style>

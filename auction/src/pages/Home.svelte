@@ -25,8 +25,4 @@
     .center {
         grid-area: mainarea;
     }
-
-    nav {
-        grid-area: navigation;
-    }
 </style>
