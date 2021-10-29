@@ -1,11 +1,9 @@
 <script>
     import {authToken, user} from "../stores/stores";
-    import {onMount} from "svelte";
     import router from "page";
 
     async function hasAdmin() {
         const userInfo = await $user;
-        console.log({userInfo})
         if (userInfo !== undefined) {
             return !!userInfo.roles.includes("admin");
         } else {
@@ -15,19 +13,14 @@
 
     async function isLoggedIn() {
         const userInfo = $authToken;
-        console.log("loggedin" ,{userInfo})
         return userInfo !== undefined;
     }
 
     function logout() {
         $authToken = ""
-        console.log("loguout", $authToken)
         router.redirect("/")
     }
 
-    onMount(async () => {
-        console.log("hasAdmin", hasAdmin())
-    })
 </script>
 
 <nav>
@@ -47,7 +40,7 @@
     </div>
     {#if $authToken}
         <div class="login">
-            <a on:click={logout} href="#"> Logout </a>
+            <a on:click={logout} href="/"> Logout </a>
         </div>
     {:else }
         <div class="login">

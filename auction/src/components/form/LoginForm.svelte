@@ -31,15 +31,14 @@
 
 
 </script>
-
-<div>
+<form on:submit|preventDefault={login}>
     <TextInput bind:value={username} placeholder="username123" name="username">username</TextInput>
     <PasswordInput bind:value={password} name="password">password</PasswordInput>
-    <button on:click={login} id="Login">Login</button>
+    <button type="submit" value="submit">Login</button>
 
     {#if error}<div id="error">{error}</div>{/if}
 
-</div>
+</form>
 
 <style>
     div {
@@ -51,9 +50,6 @@
         height: 2rem;
     }
 
-    input {
-        width: 100%;
-    }
     #error {
         color: red;
     }

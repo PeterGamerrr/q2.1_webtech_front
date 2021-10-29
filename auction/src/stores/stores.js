@@ -20,8 +20,8 @@ export const user = derived(
     }
 )
 
+//using old syntax because async await didnt work
 export const products = readable([],function start(set) {
-    console.log("one person is subscribed to products")
     fetch("http://localhost:3000/api/products")
         .then(function (response) {
             if (!response.ok) {
@@ -36,6 +36,5 @@ export const products = readable([],function start(set) {
             console.error(e)
         });
     return function stop(){
-        console.log("no one is subscribed to products");
     };
 });

@@ -1,18 +1,16 @@
 <script>
     import ItemList from "../components/itemList/ItemList.svelte";
     import Navbar from "../components/Navbar.svelte";
-    import {user} from "../stores/stores";
-    import {onMount} from "svelte";
-    onMount(() => {
-
-        console.log("user",$user);
-    })
+    import Filter from "../components/searchFilter/Filter.svelte";
 </script>
 
 <main>
     <Navbar />
     <div class="center">
         <ItemList fetchURL="http://localhost:3000/api/auctions" itemType="beer" listPageSize="4" />
+    </div>
+    <div class="left">
+        <Filter />
     </div>
 </main>
 <style>
@@ -24,11 +22,14 @@
         grid-template-rows: 3.5rem 1fr;
         grid-template-areas:
             "navigation navigation navigation"
-            ". mainarea .";
+            "leftSide mainarea rightSide";
         grid-gap: 1rem;
     }
 
     .center {
         grid-area: mainarea;
+    }
+    .left {
+        grid-area: leftSide;
     }
 </style>

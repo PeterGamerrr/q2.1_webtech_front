@@ -9,7 +9,6 @@
     let searchValue = "";
 
     const doSearch = () => {
-        console.log({input,output})
         if (searchValue.length > 0) {
             searchValue = searchValue.toLowerCase();
             output = input.filter(el => {

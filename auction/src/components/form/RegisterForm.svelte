@@ -39,12 +39,11 @@
 
 </script>
 
-<div>
+<form>
     <TextInput bind:value={username} name="username" placeholder="username123">Username</TextInput>
     <EmailInput bind:value={email} name="email" placeholder="test@test.com">Email</EmailInput>
     <PasswordInput bind:value={password} name="password" validate=true>Password</PasswordInput>
     <PasswordInput bind:value={password2} sameAs={password} name="passwordAgain">Password again</PasswordInput>
-    <button on:click={registerAccount} id="Login">Login</button>
+    <button type="submit" value="submit">Register</button>
     {#if error}<div id="error">{error}</div>{/if}
-
-</div>
+</form>

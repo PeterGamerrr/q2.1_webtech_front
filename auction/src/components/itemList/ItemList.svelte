@@ -14,7 +14,6 @@
     onMount(async () => {
         items = await getData();
         $filteredItems = items;
-        console.log($authToken)
     })
 
     async function getData() {
@@ -34,10 +33,7 @@
     }
 
     const searchBarOutput = (event) => {
-        console.log(event);
-        console.log($filteredItems)
         $filteredItems = event.detail.text;
-        console.log($filteredItems)
 
     }
 </script>

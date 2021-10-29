@@ -1,5 +1,4 @@
 <script>
-    import {onMount} from "svelte";
     import {products} from "../../stores/stores";
 
     export let beer = {
@@ -12,9 +11,8 @@
     };
 
     $: {
-        console.log($products)
         beer.product = $products.find(e => e.id === beer.productId);
-    };
+    }
 
 </script>
 
