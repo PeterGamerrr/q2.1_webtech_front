@@ -21,10 +21,13 @@
         <span class="title">{beer.product.name}</span><br>
         <ul>
             <li>
-                <b>region:</b> {beer.product.region}
+                <b>Region:</b> {beer.product.region}
             </li>
             <li>
                 <b>Capacity:</b> {beer.product.capacity}
+            </li>
+            <li>
+                <b>Brand:</b> {beer.product.brand}
             </li>
         </ul>
     </div>

@@ -2,15 +2,21 @@
     import ItemList from "../components/itemList/ItemList.svelte";
     import Navbar from "../components/Navbar.svelte";
     import Filter from "../components/searchFilter/Filter.svelte";
+    let fetchURL = "http://localhost:3000/api/auctions";
+
+    function filter(event) {
+        console.log("event",event)
+
+    }
 </script>
 
 <main>
     <Navbar />
     <div class="center">
-        <ItemList fetchURL="http://localhost:3000/api/auctions" itemType="beer" listPageSize="4" />
+        <ItemList fetchURL={fetchURL} itemType="beer" listPageSize="4" />
     </div>
     <div class="left">
-        <Filter />
+        <Filter on:filter={filter} />
     </div>
 </main>
 <style>

@@ -1,12 +1,19 @@
 <script>
 
 import FilterItem from "./FilterItem.svelte";
+import {createEventDispatcher} from "svelte";
+const dispatch = createEventDispatcher();
+
 let region;
 let capacity;
 let brand;
 
+
 function handleSubmit() {
     console.log("filter", {region, capacity, brand})
+    dispatch("filter",
+        {region, capacity, brand}
+    )
 }
 </script>
 
