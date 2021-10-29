@@ -26,6 +26,9 @@
             <li>
                 <b>Capacity:</b> {beer.product.capacity}
             </li>
+            <li>
+                <b>Brand:</b> {beer.product.brand}
+            </li>
         </ul>
     </div>
 {/if}
