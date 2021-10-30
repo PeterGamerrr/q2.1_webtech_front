@@ -3,45 +3,25 @@
     import ItemListContent from "./ItemListContent.svelte";
     import ItemListPager from "./ItemListPager.svelte";
     import {onMount} from "svelte"
-    import {authToken, filteredItems} from "../../stores/stores";
+    import {authToken, items, filters, filteredItems, searchBar} from "../../stores/stores";
 
     export let fetchURL = "";
     export let itemType = "beer";
     export let listPageSize = 1;
+    let res;
 
-    let items = [];
-
-    onMount(async () => {
-        items = await getData();
-        $filteredItems = items;
-    })
-
-    async function getData() {
-        const res = await fetch(fetchURL);
-        if (res.ok) {
-            return await res.json();
-        } else {
-            throw new Error(await res.text());
-        }
-    }
 
     let currListPage = 1;
-
-
     const updateCurrListPage = (event) => {
         currListPage = event.detail.text;
     }
 
-    const searchBarOutput = (event) => {
-        $filteredItems = event.detail.text;
-
-    }
 </script>
 
-{#await items}
+{#await res}
     <p>...Waiting</p>
-{:then items}
-    <SearchBar input={items} on:searchBarOutput={searchBarOutput}/>
+{:then responseItem}
+    <SearchBar input={$items} />
     <div class="content">
         <ItemListContent {currListPage} {listPageSize} {itemType}/>
     </div>
@@ -49,7 +29,6 @@
 {:catch error}
     <p>{error.message}</p>
 {/await}
-
 
 <style>
     .content {

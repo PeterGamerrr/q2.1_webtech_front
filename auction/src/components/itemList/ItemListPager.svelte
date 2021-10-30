@@ -1,6 +1,6 @@
 <script>
     import {createEventDispatcher} from "svelte";
-    import {filteredItems} from "../../stores/stores";
+    import {items} from "../../stores/stores";
 
     const dispatch = createEventDispatcher();
 
@@ -10,7 +10,7 @@
     let listPageCount = 1;
 
     $: {
-        listPageCount = Math.ceil($filteredItems.length / listPageSize);
+        listPageCount = Math.ceil($items.length / listPageSize);
     }
 
     const updateCurrListPage = () => {

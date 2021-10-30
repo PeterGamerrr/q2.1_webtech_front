@@ -39,7 +39,7 @@
 
 </script>
 
-<form>
+<form on:submit|preventDefault={registerAccount}>
     <TextInput bind:value={username} name="username" placeholder="username123">Username</TextInput>
     <EmailInput bind:value={email} name="email" placeholder="test@test.com">Email</EmailInput>
     <PasswordInput bind:value={password} name="password" validate=true>Password</PasswordInput>

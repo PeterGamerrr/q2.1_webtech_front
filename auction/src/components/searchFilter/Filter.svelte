@@ -1,8 +1,7 @@
 <script>
 
 import FilterItem from "./FilterItem.svelte";
-import {createEventDispatcher} from "svelte";
-const dispatch = createEventDispatcher();
+import {filters} from "../../stores/stores";
 
 let region;
 let capacity;
@@ -10,11 +9,9 @@ let brand;
 
 
 function handleSubmit() {
-    console.log("filter", {region, capacity, brand})
-    dispatch("filter",
-        {region, capacity, brand}
-    )
+    $filters = {region, capacity, brand};
 }
+
 </script>
 
 <form on:submit|preventDefault={handleSubmit}>

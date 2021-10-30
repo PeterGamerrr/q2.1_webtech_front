@@ -1,6 +1,6 @@
 <script>
     import ItemListBeer from "./ItemListBeer.svelte";
-    import {filteredItems} from "../../stores/stores";
+    import {filteredItems, items} from "../../stores/stores";
 
     export let listPageSize = 1;
     export let currListPage = 1;
@@ -12,7 +12,7 @@
         currListPage = parseInt(currListPage);
         listPageSize = parseInt(listPageSize);
         let start = (currListPage - 1) * listPageSize;
-        let end = start + listPageSize <= $filteredItems.length ? start + listPageSize : $filteredItems.length;
+        let end = start + listPageSize <= $items.length ? start + listPageSize : $items.length;
         pagedItems = $filteredItems.slice(start, end);
     }
 </script>

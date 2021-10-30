@@ -41,10 +41,6 @@
 </form>
 
 <style>
-    div {
-        width: 14rem;
-    }
-
     button {
         width: 100%;
         height: 2rem;

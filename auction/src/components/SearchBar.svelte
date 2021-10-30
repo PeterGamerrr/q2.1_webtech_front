@@ -1,5 +1,6 @@
 <script>
     import {createEventDispatcher} from "svelte";
+    import {searchBar} from "../stores/stores";
 
     const dispatch = createEventDispatcher();
 
@@ -8,41 +9,40 @@
     let output = [];
     let searchValue = "";
 
-    const doSearch = () => {
-        if (searchValue.length > 0) {
-            searchValue = searchValue.toLowerCase();
-            output = input.filter(el => {
-                if (el.product) {
-                    for (const val of Object.values(el.product)) {
-                        if (typeof val === "string" &&
-                            val.toLowerCase().includes(searchValue)) {
-                            return true;
-                        } else if (typeof val === "number" &&
-                            val.toString().includes(searchValue)) {
-                            return true;
-                        }
-                    }
-                }
-
-                return false;
-            });
-        } else {
-            output = input;
-        }
-
-        sendOutput();
-    }
-
-    const sendOutput = () => {
-        dispatch("searchBarOutput", {
-            text: output
-        });
-    }
+    // const doSearch = () => {
+    //     if (searchValue.length > 0) {
+    //         searchValue = searchValue.toLowerCase();
+    //         output = input.filter(el => {
+    //             if (el.product) {
+    //                 for (const val of Object.values(el.product)) {
+    //                     if (typeof val === "string" &&
+    //                         val.toLowerCase().includes(searchValue)) {
+    //                         return true;
+    //                     } else if (typeof val === "number" &&
+    //                         val.toString().includes(searchValue)) {
+    //                         return true;
+    //                     }
+    //                 }
+    //             }
+    //
+    //             return false;
+    //         });
+    //     } else {
+    //         output = input;
+    //     }
+    //
+    //     sendOutput();
+    // }
+    //
+    // const sendOutput = () => {
+    //     dispatch("searchBarOutput", {
+    //         text: output
+    //     });
+    // }
 </script>
 
 
 <input
         placeholder="Search..."
-        bind:value={searchValue}
-        on:input={doSearch}
+        bind:value={$searchBar}
 />
