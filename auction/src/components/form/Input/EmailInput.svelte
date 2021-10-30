@@ -8,7 +8,7 @@
     export let value = "";
     export let err;
 
-    const re = /^\S+@\S+\.\S\S+$/;
+    const re = /^\S+@\S+\.(com|nl)$/;
     let element;
 
     onMount(() => {
