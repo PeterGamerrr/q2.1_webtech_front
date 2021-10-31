@@ -1,63 +1,5 @@
 import {derived, readable, writable} from "svelte/store";
 
-let dummydata = [
-    {
-        id: 0,
-        startPrice: 25,
-        price: 30.2,
-        startDate: new Date(2020, 0).getTime(),
-        endDate: new Date(2022, 0).getTime(),
-        productId: 0
-    },
-    {
-        id: 1,
-        startPrice: 23,
-        price: 25.6,
-        startDate: new Date(2005, 0).getTime(),
-        endDate: new Date(2007, 0).getTime(),
-        productId: 1
-    },
-    {
-        id: 2,
-        startPrice: 23,
-        price: 25.6,
-        startDate: new Date(2005, 0).getTime(),
-        endDate: new Date(2007, 0).getTime(),
-        productId: 1
-    },
-    {
-        id: 3,
-        startPrice: 23,
-        price: 25.6,
-        startDate: new Date(2005, 0).getTime(),
-        endDate: new Date(2007, 0).getTime(),
-        productId: 1
-    },
-    {
-        id: 4,
-        startPrice: 23,
-        price: 25.6,
-        startDate: new Date(2005, 0).getTime(),
-        endDate: new Date(2007, 0).getTime(),
-        productId: 1
-    },
-    {
-        id: 5,
-        startPrice: 23,
-        price: 25.6,
-        startDate: new Date(2005, 0).getTime(),
-        endDate: new Date(2007, 0).getTime(),
-        productId: 1
-    },
-    {
-        id: 6,
-        startPrice: 23,
-        price: 25.6,
-        startDate: new Date(2005, 0).getTime(),
-        endDate: new Date(2007, 0).getTime(),
-        productId: 1
-    }
-]
 
 function setProduct(data) {
     if (data instanceof Object) {
@@ -76,12 +18,7 @@ export const items = writable([], function start(set) {
                 throw new Error("Unable to load auctions");
             }
             response.json().then(function(data) {
-                if (!data) {
-                    console.warn("DUMMYDATA")
-                    // set(dummydata)
-                } else {
-                    set(data);
-                }
+                set(data);
             })
         })
         .catch(function(e) {
@@ -104,9 +41,9 @@ export const filteredItems = derived(
             if($filters && out) {
                 out = out.filter(el => {
                     if (el.product === undefined) setProduct(el);
-                    if ($filters.region && $filters.region.toLowerCase() !== el.product.region.toLowerCase()) return false;
-                    if ($filters.capacity && $filters.capacity.toLowerCase() !== el.product.capacity.toLowerCase()) return false;
-                    if ($filters.brand && $filters.brand.toLowerCase() !== el.product.brand.toLowerCase()) return false;
+                    if ($filters.region && $filters.region.toString().toLowerCase() !== el.product.region.toString().toLowerCase()) return false;
+                    if ($filters.capacity && $filters.capacity.toString().toLowerCase() !== el.product.capacity.toString().toLowerCase()) return false;
+                    if ($filters.brand && $filters.brand.toString().toLowerCase() !== el.product.brand.toString().toLowerCase()) return false;
                     return true;
                 })
             }

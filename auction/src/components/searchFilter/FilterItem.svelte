@@ -1,6 +1,5 @@
 <script>
     import {products} from "../../stores/stores";
-    import {onMount} from "svelte";
 
     export let filterItem;
     export let value = "";

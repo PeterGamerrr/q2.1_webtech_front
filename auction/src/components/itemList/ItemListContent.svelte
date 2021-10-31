@@ -1,10 +1,11 @@
 <script>
     import ItemListBeer from "./ItemListBeer.svelte";
-    import {filteredItems, items} from "../../stores/stores";
+    import {filteredItems} from "../../stores/stores";
 
     export let listPageSize = 1;
     export let currListPage = 1;
-    export let itemType = "beer";
+    export let itemType = "";
+    export let admin = false;
 
     let pagedItems = [];
 
@@ -12,13 +13,13 @@
         currListPage = parseInt(currListPage);
         listPageSize = parseInt(listPageSize);
         let start = (currListPage - 1) * listPageSize;
-        let end = start + listPageSize <= $items.length ? start + listPageSize : $items.length;
+        let end = start + listPageSize <= $filteredItems.length ? start + listPageSize : $filteredItems.length;
         pagedItems = $filteredItems.slice(start, end);
     }
 </script>
 
 {#each pagedItems as item}
     {#if itemType === "beer"}
-        <ItemListBeer beer={item}/>
+        <ItemListBeer {admin} beer={item}/>
     {/if}
 {/each}

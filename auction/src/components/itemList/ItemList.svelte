@@ -2,14 +2,13 @@
     import SearchBar from "../SearchBar.svelte";
     import ItemListContent from "./ItemListContent.svelte";
     import ItemListPager from "./ItemListPager.svelte";
-    import {onMount} from "svelte"
-    import {authToken, items, filters, filteredItems, searchBar} from "../../stores/stores";
+    import {items} from "../../stores/stores";
+    import router from "page";
 
-    export let fetchURL = "";
     export let itemType = "beer";
     export let listPageSize = 1;
+    export let admin = false;
     let res;
-
 
     let currListPage = 1;
     const updateCurrListPage = (event) => {
@@ -22,8 +21,11 @@
     <p>...Waiting</p>
 {:then responseItem}
     <SearchBar input={$items} />
+    {#if admin}
+        <button on:click={() => router.redirect("/")}>add new Auction</button>
+    {/if}
     <div class="content">
-        <ItemListContent {currListPage} {listPageSize} {itemType}/>
+        <ItemListContent {admin} {currListPage} {listPageSize} {itemType}/>
     </div>
     <ItemListPager {listPageSize} on:updateCurrListPage={updateCurrListPage}/>
 {:catch error}

@@ -1,6 +1,8 @@
 <script>
     import {products} from "../../stores/stores";
+    import router from "page";
 
+    export let admin;
     export let beer = {
         id: undefined,
         startPrice: undefined,
@@ -29,7 +31,19 @@
             <li>
                 <b>Brand:</b> {beer.product.brand}
             </li>
+            {#if admin}
+                <li>
+                    <b>Auction ID:</b> {beer.id}
+                </li>
+            {/if}
         </ul>
+        {#if admin}
+        <div class="admin"><button on:click={() => router.redirect("/") }>Edit</button> <button on:click={() => router.redirect("/") }>Delete</button></div>
+        {/if}
+        </div>
+    {:else}
+    <div class="beer">
+        loading...
     </div>
 {/if}
 

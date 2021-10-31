@@ -3,13 +3,13 @@
     import Navbar from "../components/Navbar.svelte";
     import Filter from "../components/searchFilter/Filter.svelte";
     let fetchURL = "http://localhost:3000/api/auctions";
-    
+
 </script>
 
 <main>
     <Navbar />
     <div class="center">
-        <ItemList fetchURL={fetchURL} itemType="beer" listPageSize="4" />
+        <ItemList itemType="beer" listPageSize="4" />
     </div>
     <div class="left">
         <Filter />
