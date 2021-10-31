@@ -7,32 +7,44 @@
     import NewAuction from "./pages/NewAuctions.svelte";
     import {user} from "./stores/stores";
     import Auction from "./pages/Auction.svelte";
+    import Profile from "./pages/Profile.svelte";
 
 	let page;
     let params;
 
 	router('/', (ctx) => page = Home);
     router('/login', (ctx) => page = Login);
-    router('/register', (ctx) => page = Register)
+    router('/register', (ctx) => page = Register);
+    router('/profile', (ctx) => {
+        if ($user && $user.roles.includes("user")) {
+            page = Profile;
+        } else {
+            router.redirect("/");
+        }
+
+    });
+
     router('/auctions/:id', (ctx) => {
         params = ctx;
         if (params.params.id.toLowerCase() === "new") {
-            page = NewAuction;
+            if (!$user || !$user.roles.includes("admin")) {
+                router.redirect("/");
+            } else {
+                page = NewAuction;
+            }
         } else {
             page = Auction;
         }
     })
     router('/admin', (ctx) => {
-        let userData = $user;
-        if (!userData || !userData.roles.includes("admin")) {
+        if (!$user || !$user.roles.includes("admin")) {
             router.redirect("/");
         } else {
             page = Admin;
         }
     })
     router('/auctions/:id/edit', (ctx) => {
-        let userData = $user;
-        if ((!userData || !userData.roles.includes("admin")) && false) {
+        if (!$user || !$user.roles.includes("admin")) {
             router.redirect("/");
         } else {
             page = NewAuction;

@@ -40,7 +40,7 @@
 {:then u}
     <li>
         {u.username}: €{bid.price}
-        {#if ($user && u.id === $user.id)}
+        {#if (bid.endDate > Date.now() && $user && u.id === $user.id)}
             <button on:click={deleteBid}>Delete</button>
         {/if}
     </li>

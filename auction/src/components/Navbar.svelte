@@ -1,8 +1,7 @@
 <script>
     import {authToken, user} from "../stores/stores";
-    import router from "page";
 
-    async function hasAdmin() {
+    function hasAdmin() {
         const userInfo = $user;
         if (userInfo !== undefined) {
             return userInfo.roles.includes("admin");
@@ -16,10 +15,6 @@
         return userInfo !== undefined;
     }
 
-    function logout() {
-        $authToken = ""
-        router.redirect("/")
-    }
 
 </script>
 
@@ -27,24 +22,23 @@
     <div class="home">
         <a href="/"> Home </a>
     </div>
-    {#await hasAdmin()}
-        {:then val}
-        {#if val }
-            <div class="admin">
-                <a href="/admin"> Admin </a>
-            </div>
-        {/if}
-        {/await}
+
+    {#if hasAdmin() }
+        <div class="admin">
+            <a href="/admin"> Admin </a>
+        </div>
+    {/if}
+
     <div class="register">
         <a href="/register"> Register </a>
     </div>
     {#if $authToken}
         <div class="login">
-            <a on:click={logout} href="/"> Logout </a>
+            <a href="/profile"> Account </a>
         </div>
     {:else }
         <div class="login">
-            <a href={"/login?url="+encodeURIComponent(window.location.pathname)}> Login </a>
+            <a href={"/login"}> Login </a> <!-- ?url="+encodeURIComponent(window.location.pathname) -->
         </div>
     {/if}
 </nav>

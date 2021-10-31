@@ -1,6 +1,10 @@
 <script>
-    import {products} from "../../stores/stores";
+    import {authToken, items, products} from "../../stores/stores";
     import router from "page";
+    import {createEventDispatcher} from "svelte";
+
+    const dispatch = createEventDispatcher();
+
 
     export let admin;
     export let beer = {
@@ -14,6 +18,22 @@
 
     $: {
         beer.product = $products.find(e => e.id === beer.productId);
+    }
+
+    async function deleteAuction() {
+        let res = await fetch("http://localhost:3000/api/auctions/"+ beer.id, {
+            method: "delete",
+            headers: new Headers({
+                Authorization: "bearer " + $authToken
+            })
+        });
+        if (res.ok) {
+            let data = await res.json();
+            items.update(oldItems => oldItems.filter(e => e.id !== beer.id));
+            return data;
+        } else {
+            throw new Error("Couldn't fetch bids")
+        }
     }
 
 </script>
@@ -38,7 +58,7 @@
             {/if}
         </ul>
         {#if admin}
-            <div class="admin"><button on:click={() => router.redirect("/auctions/"+beer.id+"/edit") }>Edit</button> <button on:click={() => router.redirect("/") }>Delete</button></div>
+            <div class="admin"><button on:click={() => router.redirect("/auctions/"+beer.id+"/edit") }>Edit</button> <button on:click={deleteAuction}>Delete</button></div>
         {/if}
         </div>
     {:else}
