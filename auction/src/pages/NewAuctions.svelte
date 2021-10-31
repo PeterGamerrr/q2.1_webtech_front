@@ -10,10 +10,13 @@
 
     let item = $items.find(e => e.id == params.params.id);
     let auction = {};
+    let updating;
 
     if (item) {
         auction = item;
+        updating = true
     } else if (params.params.id === "new") {
+        updating = false
         console.log("new")
     } else {
         router.redirect("/admin")
@@ -24,7 +27,7 @@
 <main>
     <Navbar />
     <div class="center">
-        <AuctionForm auction="{auction}"/>
+        <AuctionForm auction="{auction}" {updating}/>
     </div>
 </main>
 <style>

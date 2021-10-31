@@ -64,13 +64,14 @@
         {#await bidsPromise}
             Loading...
         {:then bids}
+            <h3>Current highest bid: €{bids.reduce((prev, curr) => prev.price > curr.price ? prev : curr,{price: auction.startPrice}).price}</h3>
             <ul>
                 {#each bids as bid}
                     <Bid {bid} on:deleteBid={() => bidsPromise = getBids()}/>
                 {/each}
             </ul>
             {#if $user && $user.roles.includes("user") && secondsLeft > 0 }
-            <BidForm {secondsLeft} {bids}/>
+            <BidForm {secondsLeft} startPrice={auction.startPrice} {bids}/>
             {/if}
         {:catch err}
             <span class="error">{err}</span>

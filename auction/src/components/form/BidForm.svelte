@@ -4,7 +4,8 @@
     let value;
     let err;
     export let bids = [];
-    let minAmount = bids.reduce((prev, curr) => prev.price > curr.price ? prev : curr)
+    export let startPrice = 0;
+    let minAmount = bids.reduce((prev, curr) => prev.price > curr.price ? prev : curr, {price: startPrice});
 
     async function submit() {
 
