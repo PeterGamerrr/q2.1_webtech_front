@@ -1,6 +1,6 @@
 <script>
     import {createEventDispatcher} from "svelte";
-    import {authToken, user} from "../stores/stores";
+    import {authToken, user} from "../stores/user";
 
     const dispatch = createEventDispatcher();
 

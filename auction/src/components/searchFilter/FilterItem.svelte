@@ -1,5 +1,5 @@
 <script>
-    import {products} from "../../stores/stores";
+    import {products} from "../../stores/products";
 
     export let filterItem;
     export let value = "";

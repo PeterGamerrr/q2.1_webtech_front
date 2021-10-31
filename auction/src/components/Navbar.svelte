@@ -1,5 +1,5 @@
 <script>
-    import {authToken, user} from "../stores/stores";
+    import {authToken, user} from "../stores/user";
 
     function hasAdmin() {
         const userInfo = $user;

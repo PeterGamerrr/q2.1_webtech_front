@@ -2,7 +2,6 @@
     import TextInput from "./Input/TextInput.svelte";
     import EmailInput from "./Input/EmailInput.svelte";
     import PasswordInput from "./Input/PasswordInput.svelte";
-    import {authToken} from "../../stores/stores";
     import router from "page";
 
     let username;

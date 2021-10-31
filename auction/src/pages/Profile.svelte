@@ -1,6 +1,6 @@
 <script>
     import Navbar from "../components/Navbar.svelte";
-    import {authToken, user} from "../stores/stores";
+    import {authToken, user} from "../stores/user";
     import router from "page";
     import Bid from "../components/Bid.svelte";
 

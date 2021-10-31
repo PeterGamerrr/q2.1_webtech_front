@@ -5,7 +5,7 @@
     import Register from "./pages/Register.svelte";
     import Admin from "./pages/Admin.svelte";
     import NewAuction from "./pages/NewAuctions.svelte";
-    import {user} from "./stores/stores";
+    import {user} from "./stores/user";
     import Auction from "./pages/Auction.svelte";
     import Profile from "./pages/Profile.svelte";
 

@@ -2,7 +2,7 @@
 
     import ProductInput from "./Input/ProductInput.svelte";
     import DateInput from "./Input/DateInput.svelte";
-    import {authToken} from "../../stores/stores";
+    import {authToken} from "../../stores/user";
     import router from "page";
     import NumberInput from "./Input/NumberInput.svelte";
 

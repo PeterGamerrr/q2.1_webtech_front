@@ -1,6 +1,6 @@
 <script>
     import TextInput from "./Input/TextInput.svelte";
-    import {authToken} from "../../stores/stores";
+    import {authToken} from "../../stores/user";
     import PasswordInput from "./Input/PasswordInput.svelte";
     import router from "page";
 

@@ -1,6 +1,6 @@
 <script>
     import ItemListBeer from "./ItemListBeer.svelte";
-    import {filteredItems} from "../../stores/stores";
+    import {filteredItems} from "../../stores/items";
 
     export let listPageSize = 1;
     export let currListPage = 1;

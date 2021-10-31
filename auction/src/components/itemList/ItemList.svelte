@@ -2,7 +2,7 @@
     import SearchBar from "../SearchBar.svelte";
     import ItemListContent from "./ItemListContent.svelte";
     import ItemListPager from "./ItemListPager.svelte";
-    import {items} from "../../stores/stores";
+    import {items} from "../../stores/items";
     import router from "page";
 
     export let itemType = "beer";

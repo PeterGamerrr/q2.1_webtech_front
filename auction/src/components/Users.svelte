@@ -1,5 +1,5 @@
 <script>
-    import {authToken} from "../stores/stores";
+    import {authToken} from "../stores/user";
 
     async function getUsers() {
         const res = await fetch("http://localhost:3000/api/users",{

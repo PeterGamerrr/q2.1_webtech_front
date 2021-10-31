@@ -1,6 +1,7 @@
 <script>
     import Navbar from "../components/Navbar.svelte";
-    import {items, user} from "../stores/stores";
+    import {items} from "../stores/items";
+    import {user} from "../stores/user";
     import router from "page";
     import Bid from "../components/Bid.svelte";
     import BidForm from "../components/form/BidForm.svelte";

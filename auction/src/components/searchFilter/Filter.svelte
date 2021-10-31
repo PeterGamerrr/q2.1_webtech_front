@@ -1,7 +1,7 @@
 <script>
 
 import FilterItem from "./FilterItem.svelte";
-import {filters} from "../../stores/stores";
+import {filters} from "../../stores/items";
 
 let region;
 let capacity;

@@ -1,6 +1,6 @@
 <script>
     import {createEventDispatcher} from "svelte";
-    import {searchBar} from "../stores/stores";
+    import {searchBar} from "../stores/items";
 
     const dispatch = createEventDispatcher();
 

@@ -1,5 +1,7 @@
 <script>
-    import {authToken, items, products} from "../../stores/stores";
+    import {authToken} from "../../stores/user";
+    import {items} from "../../stores/items";
+    import {products} from "../../stores/products";
     import router from "page";
     import {createEventDispatcher} from "svelte";
 
