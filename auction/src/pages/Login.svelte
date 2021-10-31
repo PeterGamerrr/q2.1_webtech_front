@@ -1,6 +1,8 @@
 <script>
     import LoginForm from "../components/form/LoginForm.svelte";
     import Navbar from "../components/Navbar.svelte";
+
+    export let params;  //so it wont show up in the console that its not a property
 </script>
 
 <main>

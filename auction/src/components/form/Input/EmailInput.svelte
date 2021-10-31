@@ -9,11 +9,6 @@
     export let err;
 
     const re = /^\S+@\S+\.(com|nl)$/;
-    let element;
-
-    onMount(() => {
-        element = document.getElementById(name);
-    })
 
     $: {
         if (re.test(inValue) || inValue === "") {

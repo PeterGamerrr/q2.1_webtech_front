@@ -22,7 +22,7 @@
 {:then responseItem}
     <SearchBar input={$items} />
     {#if admin}
-        <button on:click={() => router.redirect("/")}>add new Auction</button>
+        <button on:click={() => router.redirect("/auctions/new")}>add new Auction</button>
     {/if}
     <div class="content">
         <ItemListContent {admin} {currListPage} {listPageSize} {itemType}/>

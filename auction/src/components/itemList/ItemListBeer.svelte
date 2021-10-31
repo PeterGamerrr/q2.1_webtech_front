@@ -38,7 +38,7 @@
             {/if}
         </ul>
         {#if admin}
-        <div class="admin"><button on:click={() => router.redirect("/") }>Edit</button> <button on:click={() => router.redirect("/") }>Delete</button></div>
+            <div class="admin"><button on:click={() => router.redirect("/auctions/"+beer.id+"/edit") }>Edit</button> <button on:click={() => router.redirect("/") }>Delete</button></div>
         {/if}
         </div>
     {:else}

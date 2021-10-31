@@ -2,18 +2,10 @@
     import Navbar from "../components/Navbar.svelte";
     import ItemList from "../components/itemList/ItemList.svelte";
     import Users from "../components/Users.svelte";
-    import {user} from "../stores/stores";
-    import router from "page";
 
     let menuSelected = "Auctions";
 
-    (async () => {
-        let userData = await $user;
-        if (!userData || !userData.roles.includes("admin")) {
-            router.redirect("/");
-        }
-    })()
-
+    export let params;  //so it wont show up in the console that its not a property
 
 </script>
 

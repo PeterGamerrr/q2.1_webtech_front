@@ -1,14 +1,30 @@
 <script>
     import Navbar from "../components/Navbar.svelte";
-    import RegisterForm from "../components/form/RegisterForm.svelte";
+    import {items} from "../stores/stores";
+    import router from "page";
+    import AuctionForm from "../components/form/AuctionForm.svelte";
 
-    export let params;  //so it wont show up in the console that its not a property
+    export let params;
+
+    console.log(params);
+
+    let item = $items.find(e => e.id == params.params.id);
+    let auction = {};
+
+    if (item) {
+        auction = item;
+    } else if (params.params.id === "new") {
+        console.log("new")
+    } else {
+        router.redirect("/admin")
+    }
+
 </script>
 
 <main>
     <Navbar />
     <div class="center">
-        <RegisterForm />
+        <AuctionForm auction="{auction}"/>
     </div>
 </main>
 <style>

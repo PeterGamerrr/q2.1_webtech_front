@@ -4,6 +4,9 @@
     import Filter from "../components/searchFilter/Filter.svelte";
     let fetchURL = "http://localhost:3000/api/auctions";
 
+    export let params; //so it wont show up in the console that its not a property
+
+
 </script>
 
 <main>

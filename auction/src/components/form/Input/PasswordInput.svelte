@@ -10,13 +10,6 @@
     export let value = "";
     export let err = ""
 
-    let element;
-
-
-    onMount(() => {
-        element = document.getElementById(name);
-    })
-
     $: {
         if (validate) {
             if (validatePassword(inValue) || inValue === "") {
