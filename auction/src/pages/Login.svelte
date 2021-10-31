@@ -3,12 +3,13 @@
     import Navbar from "../components/Navbar.svelte";
 
     export let params;  //so it wont show up in the console that its not a property
+
 </script>
 
 <main>
     <Navbar />
     <div class="center">
-        <LoginForm />
+        <LoginForm/>
     </div>
 </main>
 <style>

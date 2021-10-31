@@ -1,31 +1,30 @@
 <script>
-
     export let name = "";
     export let placeholder = "";
+    export let minValue = 0;
+    let err;
 
-    let inValue = "";
-    export let value = "";
-    export let err;
-
-    const re = /^\S+@\S+\.(com|nl)$/;
+    export let value;
+    let inValue
+    console.log()
 
     $: {
-        if (re.test(inValue) || inValue === "") {
+        if (inValue > minValue) {
             value = inValue;
-            err = "";
-
+            err = null;
+        } else if (!inValue){
+            err = null;
         } else {
-            value = "";
-            err = "Invalid email";
-
+            err = "Too low."
         }
     }
 
 </script>
 
+
 <label for="{name}">
     <slot />
-    <span class="error">{err}</span>
+    {#if err}<span class="error">{err}</span>{/if}
 </label>
 
 <input
@@ -34,7 +33,7 @@
         name="{name}"
         id="{name}"
         placeholder="{placeholder}"
-        type="text"
+        type="number"
 /><br/>
 
 

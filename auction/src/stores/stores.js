@@ -73,11 +73,11 @@ export const authToken = writable("");
 
 export const user = derived(
     authToken,
-    async $authToken => {
+    $authToken => {
         if ($authToken) {
             let data = $authToken.split(".")[1];
             data = decodeURIComponent(escape(window.atob(data)));
-            data = await JSON.parse(data);
+            data = JSON.parse(data);
             return data;
         } else {
             return undefined;

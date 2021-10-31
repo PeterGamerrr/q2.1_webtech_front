@@ -22,16 +22,16 @@
             page = Auction;
         }
     })
-    router('/admin', async (ctx) => {
-        let userData = await $user;
+    router('/admin', (ctx) => {
+        let userData = $user;
         if (!userData || !userData.roles.includes("admin")) {
             router.redirect("/");
         } else {
             page = Admin;
         }
     })
-    router('/auctions/:id/edit', async (ctx) => {
-        let userData = await $user;
+    router('/auctions/:id/edit', (ctx) => {
+        let userData = $user;
         if ((!userData || !userData.roles.includes("admin")) && false) {
             router.redirect("/");
         } else {

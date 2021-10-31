@@ -20,7 +20,7 @@
 
 {#if beer.product}
     <div class="beer">
-        <span class="title">{beer.product.name}</span><br>
+        <span class="title"><a href={"/auctions/"+ beer.id}>{beer.product.name}</a></span><br>
         <ul>
             <li>
                 <b>Region:</b> {beer.product.region}

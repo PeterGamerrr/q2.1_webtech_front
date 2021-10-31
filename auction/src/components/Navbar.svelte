@@ -3,9 +3,9 @@
     import router from "page";
 
     async function hasAdmin() {
-        const userInfo = await $user;
+        const userInfo = $user;
         if (userInfo !== undefined) {
-            return !!userInfo.roles.includes("admin");
+            return userInfo.roles.includes("admin");
         } else {
             return false
         }
@@ -44,7 +44,7 @@
         </div>
     {:else }
         <div class="login">
-            <a href="/login"> Login </a>
+            <a href={"/login?url="+encodeURIComponent(window.location.pathname)}> Login </a>
         </div>
     {/if}
 </nav>
