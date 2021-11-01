@@ -26,7 +26,7 @@
     <ul>
         {#each users as user (user.id)}
             <li>
-                {user.id} - {user.name} - {user.email}
+                {user.id} - {user.username} - {user.email}
             </li>
         {/each}
     </ul>
