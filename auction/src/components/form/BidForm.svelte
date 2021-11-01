@@ -8,7 +8,7 @@
     let minAmount = bids.reduce((prev, curr) => prev.price > curr.price ? prev : curr, {price: startPrice});
 
     async function submit() {
-
+        //TODO: add submit
     }
 </script>
 

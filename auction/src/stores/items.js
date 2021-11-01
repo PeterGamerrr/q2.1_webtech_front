@@ -1,6 +1,8 @@
 import {derived, writable} from "svelte/store";
 import {products} from "./products";
 
+
+//a function that adds product data based on productid
 function setProduct(data) {
     if (data instanceof Object) {
         let productList;
@@ -11,6 +13,7 @@ function setProduct(data) {
     }
 }
 
+//a complete set of all the auctions
 export const items = writable([], function start(set) {
     fetch("http://localhost:3000/api/auctions")
         .then(function(response) {
@@ -18,6 +21,7 @@ export const items = writable([], function start(set) {
                 throw new Error("Unable to load auctions");
             }
             response.json().then(function(data) {
+                console.log({data})
                 set(data);
             })
         })
@@ -28,10 +32,13 @@ export const items = writable([], function start(set) {
     }
 });
 
+//the value of the searchbar
 export const searchBar = writable("");
 
+//all the filter values
 export const filters = writable({region: "", capacity: "", brand: ""});
 
+//all auctions filtered on search bar and filter values.
 export const filteredItems = derived(
     [items, searchBar, filters],
     ([$items,$searchbar,$filters], set) => {

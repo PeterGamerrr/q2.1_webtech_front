@@ -7,7 +7,7 @@
     export let value = "";
     export let err;
 
-    const re = /^\S+@\S+\.(com|nl)$/;
+    const re = /^\S+@\S+\.(com|nl)$/; //matches all email formats ending in .com and .nl (not sure why we cant just allow all top level domains)
 
     $: {
         if (re.test(inValue) || inValue === "") {

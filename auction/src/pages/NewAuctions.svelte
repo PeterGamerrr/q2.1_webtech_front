@@ -6,8 +6,6 @@
 
     export let params;
 
-    console.log(params);
-
     let item = $items.find(e => e.id == params.params.id);
     let auction = {};
     let updating;
@@ -17,7 +15,6 @@
         updating = true
     } else if (params.params.id === "new") {
         updating = false
-        console.log("new")
     } else {
         router.redirect("/admin")
     }

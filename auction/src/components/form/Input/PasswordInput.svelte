@@ -1,10 +1,8 @@
 <script>
-    import {onMount} from "svelte";
-
     export let name = "";
     export let placeholder = "";
-    export let validate = false;
-    export let sameAs = null;
+    export let validate = false; // if this value is set then it makes sure that the password is strong enough.
+    export let sameAs = null; //if this value is set then it compares it to that value.
 
     let inValue = "";
     export let value = "";
@@ -33,6 +31,7 @@
         }
     }
 
+    //functions checks if the password is strong enough by making sure its atleast 6 long has a capital letter and has a number
     function validatePassword(password) {
         if (password.length < 6) return false;
 

@@ -32,6 +32,7 @@ function handleSubmit() {
         border-radius: 10px;
         padding: 10px;
     }
+
     button {
         width: 100%;
     }

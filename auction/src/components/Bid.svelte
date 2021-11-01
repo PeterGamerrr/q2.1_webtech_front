@@ -5,7 +5,9 @@
     const dispatch = createEventDispatcher();
 
     export let bid;
+    export let secondsLeft;
 
+    //get the user
     async function getUser() {
         let res = await fetch("http://localhost:3000/api/users/"+ bid.userId);
         if (res.ok) {
@@ -15,7 +17,7 @@
         }
     }
 
-
+    //delete a bid using and dispatching so the layer above can update
     async function deleteBid() {
         let res = await fetch("http://localhost:3000/api/bids/"+ bid.id, {
             method: "delete",
@@ -40,7 +42,7 @@
 {:then u}
     <li>
         {u.username}: €{bid.price}
-        {#if (bid.endDate > Date.now() && $user && u.id === $user.id)}
+        {#if (secondsLeft > 0 && $user && u.id === $user.id)}
             <button on:click={deleteBid}>Delete</button>
         {/if}
     </li>

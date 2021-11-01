@@ -7,7 +7,6 @@
 
     const dispatch = createEventDispatcher();
 
-
     export let admin;
     export let beer = {
         id: undefined,
@@ -22,6 +21,7 @@
         beer.product = $products.find(e => e.id === beer.productId);
     }
 
+    //deletes an auction on the server while also deleting it on the client
     async function deleteAuction() {
         let res = await fetch("http://localhost:3000/api/auctions/"+ beer.id, {
             method: "delete",

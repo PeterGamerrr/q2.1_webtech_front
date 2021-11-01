@@ -10,6 +10,9 @@
     export let updating = false;
     let err = "";
 
+
+    //if changing it puts the data into a put request
+    //if its not changing the it puts the data into a post request
     async function submit() {
         let res
         if (updating) {

@@ -10,11 +10,6 @@
         }
     }
 
-    async function isLoggedIn() {
-        const userInfo = $authToken;
-        return userInfo !== undefined;
-    }
-
 
 </script>
 

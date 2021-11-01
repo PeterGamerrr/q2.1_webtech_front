@@ -25,7 +25,7 @@
     setInterval(() => secondsLeft = Math.trunc((auction.endDate - Date.now())/1000), 1000)
 
     async function getBids() {
-        let res = await fetch("http://localhost:3000/api/bids?auctionid="+auction.id);
+        let res = await fetch("http://localhost:3000/api/bids?auctionId="+params.params.id);
         if (res.ok) {
             return await res.json();
         } else {

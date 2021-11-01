@@ -6,7 +6,6 @@
 
     export let value;
     let inValue
-    console.log()
 
     $: {
         if (inValue > minValue) {

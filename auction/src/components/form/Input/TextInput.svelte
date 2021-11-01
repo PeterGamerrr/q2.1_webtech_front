@@ -2,7 +2,7 @@
     export let name = "";
     export let placeholder = "";
 
-    export let value = "";
+    export let value = ""; //for outside binding
 
 </script>
 
