@@ -31,7 +31,7 @@
                 auctionId: 1,
             },
         ];
-        let res = await fetch("http://localhost:3000/api/bids?haswon=true&userid="+$user.id);
+        let res = await fetch("http://localhost:3000/api/bids?haswon=true&userId="+$user.id);
         if (res.ok) {
             let data = await res.json();
             return data;

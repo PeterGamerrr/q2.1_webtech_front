@@ -1,0 +1,7 @@
+#Componenten structuur.
+De componenten hebben wij als eerst opgedeeld in pages en overige componenten. De pages bevatten componenten die eigenlijk de basis zijn voor de html documenten.
+
+Voor de overige componenten hebben wij gekeken van wat zijn logische groepen waar ze bij passen zo hebben we een groep voor de itemlist een groep voor de filter en een groep voor forms en in de groep forms weer een groep voor inputs. 
+Wij vonden hierbij het belangrijkste de leesbaarheid van de code en daarbij is het belangrijk om de componenten niet te klein maar ook niet te groot te maken, want als het te klein is heb je honderden componenten en kan niemand meer goed bijhouden wat waarbij hoort. En als je ze te groot hebt dan kan je stukken krijgen die zichzelf de hele tijd herhalen en dat zorgt ervoor dat je bestand te vol zit om goed te lezen.
+
+Ook hebben we een aantal belangrijke punten buiten deze structuur staan zoals de app.svelte, main.js en alle stores. app.svelte bevat de router en welke pagina hij aan welke url moest koppelen. Main.js start het hele programma op. En de stores zijn een soort globale variabelen die weer opgedeeld zijn in alles voor de losse items (auctions), de user data en de products.
