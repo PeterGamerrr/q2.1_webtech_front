@@ -15,7 +15,6 @@
     $: {
         if (item) {
             auction = item;
-            console.log(auction)
         } else {
             router.redirect("/");
         }
@@ -68,11 +67,11 @@
             <h3>Current highest bid: €{bids.reduce((prev, curr) => prev.price > curr.price ? prev : curr,{price: auction.startPrice}).price}</h3>
             <ul>
                 {#each bids as bid}
-                    <Bid {bid} on:deleteBid={() => bidsPromise = getBids()}/>
+                    <Bid {bid} {secondsLeft} on:deleteBid={() => bidsPromise = getBids()}/>
                 {/each}
             </ul>
             {#if $user && $user.roles.includes("user") && secondsLeft > 0 }
-            <BidForm {secondsLeft} startPrice={auction.startPrice} {bids}/>
+            <BidForm on:submit={() => bidsPromise = getBids()} startPrice={auction.startPrice} auctionId={auction.id} {bids}/>
             {/if}
         {:catch err}
             <span class="error">{err}</span>

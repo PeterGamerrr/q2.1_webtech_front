@@ -5,7 +5,7 @@
     const dispatch = createEventDispatcher();
 
     export let bid;
-    export let secondsLeft;
+    export let secondsLeft = 1;
 
     //get the user
     async function getUser() {

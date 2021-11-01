@@ -44,7 +44,6 @@
         })
 
         return hasCapital && hasNumber;
-
     }
 
 </script>

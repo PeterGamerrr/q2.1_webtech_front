@@ -12,26 +12,7 @@
     }
 
     async function getWonBids() {
-        //FIXME: REMOVE DUMMY DATA
-        return [
-            {
-                id: 0,
-                price: 30.2,
-                hasWon: false,
-                date: new Date(2021, 0).getTime(),
-                userId: 0,
-                auctionId: 0,
-            },
-            {
-                id: 1,
-                price: 25.6,
-                hasWon: true,
-                date: new Date(2006, 0).getTime(),
-                userId: 1,
-                auctionId: 1,
-            },
-        ];
-        let res = await fetch("http://localhost:3000/api/bids?haswon=true&userId="+$user.id);
+        let res = await fetch("http://localhost:3000/api/bids?hasWon=true&userId="+$user.id);
         if (res.ok) {
             let data = await res.json();
             return data;
@@ -60,7 +41,7 @@
             {:then bids}
                 <ul>
                     {#each bids as bid}
-                        <Bid {bid}/>
+                        <Bid secondsLeft=-1 {bid}/>
                     {/each}
                 </ul>
             {:catch err}
