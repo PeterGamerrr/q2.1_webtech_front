@@ -66,7 +66,7 @@
 
 <style>
     .error {
-        color red;
+        color: red;
     }
     button {
         width: 100%;
