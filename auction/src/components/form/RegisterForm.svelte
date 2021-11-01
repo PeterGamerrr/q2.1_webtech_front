@@ -19,9 +19,10 @@
                     "Content-Type": "Application/json",
                 },
                 body: JSON.stringify({
-                    username,
+                    username: username,
                     password: password2,
-                    email
+                    email: email,
+                    roles: ["user"]
                 })
             });
             if (res.status === 201) {
@@ -46,3 +47,14 @@
     <button type="submit" value="submit">Register</button>
     {#if error}<div id="error">{error}</div>{/if}
 </form>
+
+<style>
+    button {
+        width: 100%;
+        height: 2rem;
+    }
+
+    #error {
+        color: red;
+    }
+</style>

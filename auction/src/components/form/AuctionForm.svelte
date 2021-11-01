@@ -60,6 +60,15 @@
     <ProductInput bind:value={auction.productId}>Product</ProductInput>
     <DateInput bind:value={auction.endDate}>End date timestamp</DateInput>
     <NumberInput bind:value={auction.startPrice}>Startprice</NumberInput>
-    <br/><button type="submit" value="submit">submit</button>
+    <button type="submit" value="submit">submit</button>
 </form>
 {#if err}<span class="error">{err}</span>{/if}
+
+<style>
+    .error {
+        color red;
+    }
+    button {
+        width: 100%;
+    }
+</style>

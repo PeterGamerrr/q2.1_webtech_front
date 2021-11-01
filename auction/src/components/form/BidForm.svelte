@@ -44,4 +44,7 @@
     button {
         width: 100%;
     }
+    .error {
+        color: red;
+    }
 </style>
